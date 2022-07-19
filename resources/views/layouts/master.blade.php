@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
     
 <link rel="stylesheet" href="assets/css/shared/iconly.css">
+<link rel="stylesheet" href="assets/css/pages/simple-datatables.css">
+
 
 </head>
 
@@ -42,7 +44,7 @@
             <li class="sidebar-title">Menu</li>
             
             <li
-                class="sidebar-item active ">
+                class="sidebar-item {{ request()->is('home*') ? 'active' : '' }} ">
                 <a href="{{ url('home') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
@@ -56,24 +58,24 @@
                     <span>Kas Kelas</span>
                 </a>
                 <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="#">Pemasukan</a>
+                    <li class="submenu-item {{ request()->is('kas-pemasukan*') ? 'active' : '' }}">
+                        <a href="{{ url ('kas-pemasukan') }}">Pemasukan</a>
                     </li>
-                    <li class="submenu-item ">
-                        <a href="#">Pengeluaran</a>
+                    <li class="submenu-item submenu-item {{ request()->is('kas-pemasukan*') ? 'active' : '' }}">
+                        <a href="{{ url ('kas-pengeluaran') }}">Pengeluaran</a>
                     </li>
                 </ul>
             </li>
 
             <li
-            class="sidebar-item">
+            class="sidebar-item" {{ request()->is('dashboard*') ? 'active' : '' }}>
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                 <span>Laporan</span>
             </a>
         </li>
 
-        <li class="sidebar-item  ">
+        <li class="sidebar-item {{ request()->is('logout*') ? 'active' : '' }} ">
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" class="sidebar-link">
                 <i class="bi bi-arrow-left-square-fill"></i>
@@ -98,9 +100,6 @@
                 </a>
             </header>
             
-<div class="page-heading">
-    <h3>Profile Statistics</h3>
-</div>
 <div class="page-content">
     @yield('content')
 </div>
@@ -110,6 +109,8 @@
     <script src="assets/js/app.js"></script>
     
 <script src="assets/js/pages/dashboard.js"></script>
+<script src="assets/js/extensions/simple-datatables.js"></script>
+
 
 </body>
 
