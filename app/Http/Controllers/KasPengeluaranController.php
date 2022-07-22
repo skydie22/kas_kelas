@@ -13,7 +13,7 @@ class KasPengeluaranController extends Controller
      */
     public function index()
     {
-        return view('kas-pengeluaran.pengeluaran');
+        return view('kas-pengeluaran.index');
     }
 
     /**
@@ -79,6 +79,6 @@ class KasPengeluaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

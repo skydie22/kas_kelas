@@ -23,13 +23,13 @@
         <div class="card">
 
             <div class="card-body">
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah">
                     Tambah Data
                 </button>
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>no</th>
                             <th>Tanggal</th>
                             <th>Uraian</th>
                             <th>Pemasukan</th>
@@ -37,11 +37,30 @@
                         </tr>
                     </thead>
 
+                        
+                    <tbody>
+                        @foreach ($datas as $data)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $data->tanggal }}</td>
+                            <td>{{ $data->uraian }}</td>
+                            <td>{{ $data->kas_pemasukan }}</td>
+                            <td>
+                                <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#edit{{ $data->id }}">edit</i></a>
+                                <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{ $data->id }}">delete</i></a>
+
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+
                 </table>
             </div>
         </div>
 
     </section>
 </div>
-{{-- @include('kas-pemasukan/forms') --}}
+@include('kas-pemasukan/create')
+@include('kas-pemasukan/edit')
+@include('kas-pemasukan/delete')
 @endsection

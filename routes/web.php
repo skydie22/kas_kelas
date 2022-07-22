@@ -20,13 +20,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// test
-Route::get('/tes', function () {
-    return view('kas-pemasukan.pemasukan');
-});
+
+
 
 Auth::routes();
 
+
+//get
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas-pemasukan');
-Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas-pengeluaran');
+Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas.pemasukan');
+Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran');
+
+//post
+Route::post('/kas-pemasukan/add',[App\Http\Controllers\KasPemasukanController::class, 'storePemasukan'])->name('tambah.pemasukan');
+
+
+//put
+Route::put('/kas-pemasukan/edit/{id}', [KasPemasukanController::class, 'update']);
+
+//delete
+Route::delete('/kas-pemasukan/delete/{id}', [KasPemasukanController::class , 'destroy']);

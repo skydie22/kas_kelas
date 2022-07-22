@@ -17,7 +17,7 @@ class CreateKasPemasukansTable extends Migration
             $table->id();
             $table->date("tanggal");
             $table->longText("uraian");
-            $table->integer("masuk")->nullable();
+            $table->bigInteger("kas_pemasukan")->nullable();
             $table->timestamps();
         });
     }
