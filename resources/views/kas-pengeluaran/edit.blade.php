@@ -1,13 +1,13 @@
 @foreach ($datas as $data)
     
-<div class="modal fade" id="edit-pemasukan{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit-pengeluaran{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Pemasukan Kas Kelas</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Pengeluaran Kas Kelas</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        <form action={{url('/kas-pemasukan/edit/'. $data->id)}} method="POST" enctype="multipart/form-data">
+        <form action={{url('/kas-pengeluaran/edit/'. $data->id)}} method="POST" enctype="multipart/form-data">
             
             @csrf
             @method('put')
@@ -17,8 +17,8 @@
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"  name="uraian" value="{{ $data->uraian }}">
                 </div>
                 <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Pemasukan</label> 
-                <input type="number"  class="form-control" placeholder="Another input placeholder" name="kas_pemasukan" autocomplete="off" value="{{ $data->kas_pemasukan }}">
+                    <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label> 
+                <input type="number"  class="form-control" placeholder="Another input placeholder" name="kas_pengeluaran" autocomplete="off" value="{{ $data->kas_pengeluaran }}">
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

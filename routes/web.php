@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KasPemasukanController;
 use App\Http\Controllers\KasPengeluaranController;
+use App\Models\KasPengeluaran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +33,17 @@ Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class
 Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran');
 
 //post
-Route::post('/kas-pemasukan/add',[App\Http\Controllers\KasPemasukanController::class, 'storePemasukan'])->name('tambah.pemasukan');
+Route::post('/kas-pemasukan/add', [App\Http\Controllers\KasPemasukanController::class, 'storePemasukan'])->name('tambah.pemasukan');
+Route::post('/kas-pengeluaran/add', [App\Http\Controllers\KasPengeluaranController::class, 'storePengeluaran'])->name('tambah.pengeluaran');
+
+
 
 
 //put
 Route::put('/kas-pemasukan/edit/{id}', [KasPemasukanController::class, 'update']);
+Route::put('/kas-pengeluaran/edit/{id}', [KasPengeluaranController::class, 'update']);
+
 
 //delete
-Route::delete('/kas-pemasukan/delete/{id}', [KasPemasukanController::class , 'destroy']);
+Route::delete('/kas-pemasukan/delete/{id}', [KasPemasukanController::class, 'destroy']);
+Route::delete('/kas-pengeluaran/delete/{id}', [KasPengeluaranController::class, 'destroy']);

@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambah-pemasukan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,9 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
         <form action={{url('/kas-pemasukan/add')}} method="POST" enctype="multipart/form-data">
-            
             @csrf
-            
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Uraian</label>

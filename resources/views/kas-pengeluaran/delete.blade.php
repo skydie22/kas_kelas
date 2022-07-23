@@ -1,8 +1,8 @@
 @foreach ($datas as $data)
-<div class="modal fade" id="delete-pemasukan{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete-pengeluaran{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action={{ url('/kas-pemasukan/delete/' . $data->id) }} method="POST" enctype="multipart/form-data">
+            <form action={{ url('/kas-pengeluaran/delete/' . $data->id) }} method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-body">

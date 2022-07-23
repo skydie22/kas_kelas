@@ -23,7 +23,7 @@
         <div class="card">
 
             <div class="card-body">
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah">
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambah-pemasukan">
                     Tambah Data
                 </button>
                 <table class="table table-striped" id="table1">
@@ -46,8 +46,8 @@
                             <td>{{ $data->uraian }}</td>
                             <td>{{ $data->kas_pemasukan }}</td>
                             <td>
-                                <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#edit{{ $data->id }}">edit</i></a>
-                                <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{ $data->id }}">delete</i></a>
+                                <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#edit-pemasukan{{ $data->id }}">edit</i></a>
+                                <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-pemasukan{{ $data->id }}">delete</i></a>
 
                             </td>
                         </tr>

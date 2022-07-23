@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KasPengeluaran;
 use Illuminate\Http\Request;
 
 class KasPengeluaranController extends Controller
@@ -13,7 +14,8 @@ class KasPengeluaranController extends Controller
      */
     public function index()
     {
-        return view('kas-pengeluaran.index');
+        $kas_pengeluaran = KasPengeluaran::get();
+        return view('kas-pengeluaran.index', ["datas" => $kas_pengeluaran]);
     }
 
     /**
@@ -32,9 +34,24 @@ class KasPengeluaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storePengeluaran(Request $request)
     {
-        //
+        $this->validate($request, [
+            'tanggal' => 'required',
+            'uraian' => 'required',
+            'kas_pengeluaran' => 'required'
+        ]);
+
+        $datas = new KasPengeluaran();
+        $datas->tanggal = $request->tanggal;
+        $datas->uraian = $request->uraian;
+        $datas->kas_pengeluaran = $request->kas_pengeluaran;
+
+        // dd($datas);
+
+        $datas->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -68,7 +85,20 @@ class KasPengeluaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $datas = KasPengeluaran::where('id', $id)->firstOrFail();
+
+        $this->validate($request, [
+            'tanggal' => 'required',
+            'uraian' => 'required',
+            'kas_pengeluaran' => 'required'
+        ]);
+
+        $datas->tanggal = $request->tanggal;
+        $datas->uraian = $request->uraian;
+        $datas->kas_pengeluaran = $request->kas_pengeluaran;
+        $datas->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -79,6 +109,10 @@ class KasPengeluaranController extends Controller
      */
     public function destroy($id)
     {
-        
+        $datas = KasPengeluaran::find($id);
+        $datas->delete();
+
+
+        return redirect()->back();
     }
 }
