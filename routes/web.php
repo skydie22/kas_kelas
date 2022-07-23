@@ -28,15 +28,13 @@ Auth::routes();
 
 
 //get
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas.pemasukan');
 Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran');
 
 //post
 Route::post('/kas-pemasukan/add', [App\Http\Controllers\KasPemasukanController::class, 'storePemasukan'])->name('tambah.pemasukan');
 Route::post('/kas-pengeluaran/add', [App\Http\Controllers\KasPengeluaranController::class, 'storePengeluaran'])->name('tambah.pengeluaran');
-
-
 
 
 //put
