@@ -16,7 +16,7 @@ class DashboardController extends Controller
     {
         
         $kasMasuk = Kas::where('type', 'MASUK')->sum('kas');
-        $kasPengeluaran = Kas::where('type', 'MASUK')->sum('kas');
+        $kasPengeluaran = Kas::where('type', 'KELUAR')->sum('kas');
         $kas = $kasMasuk - $kasPengeluaran;
         return view('dashboard' , compact('kasMasuk', 'kasPengeluaran', 'kas'));
     }
