@@ -61,18 +61,34 @@
             </div>
            
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Profile Visit</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-profile-visit"></div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Profile Visit</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="chart-profile-visit"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+                
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Rekap Kas Kelas</h4>
+                </div>
+                <div class="card-body">
+                    <div id="bar"></div>
+                </div>
+            </div>
         </div>
+
+        
     </div>
     {{-- <div class="col-12 col-lg-3">
     
