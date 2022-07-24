@@ -52,7 +52,7 @@
             <li
                 class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
-                    <i class="bi bi-cash    "></i>
+                    <i class="bi bi-cash"></i>
                     <span>Kas Kelas</span>
                 </a>
                 <ul class="submenu ">
@@ -67,7 +67,7 @@
 
             <li
             class="sidebar-item" {{ request()->is('dashboard*') ? 'active' : '' }}>
-            <a href="#" class='sidebar-link'>
+            <a href="{{ url('/rekap') }}" class='sidebar-link'>
                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                 <span>Laporan</span>
             </a>

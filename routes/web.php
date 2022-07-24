@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KasPemasukanController;
 use App\Http\Controllers\KasPengeluaranController;
+use App\Http\Controllers\rekapController;
 use App\Models\KasPengeluaran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,7 @@ Route::put('/kas-pengeluaran/edit/{id}', [KasPengeluaranController::class, 'upda
 //delete
 Route::delete('/kas-pemasukan/delete/{id}', [KasPemasukanController::class, 'destroy']);
 Route::delete('/kas-pengeluaran/delete/{id}', [KasPengeluaranController::class, 'destroy']);
+
+
+//rekap
+Route::get('/rekap' , [rekapController::class , 'index']);
