@@ -18,7 +18,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="formGroupExampleInput2" class="form-label">Pemasukan</label> 
-                <input type="number"  class="form-control" placeholder="Another input placeholder" name="kas_pemasukan" autocomplete="off" value="{{ $data->kas_pemasukan }}">
+                <input type="number"  class="form-control" placeholder="Another input placeholder" name="kas" autocomplete="off" value="{{ $data->kas }}">
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

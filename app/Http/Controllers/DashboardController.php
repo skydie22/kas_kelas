@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KasPemasukan;
-use App\Models\KasPengeluaran;
+use App\Models\Kas;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,8 +15,8 @@ class DashboardController extends Controller
     public function index()
     {
         
-        $kasMasuk = KasPemasukan::sum('kas_pemasukan');
-        $kasPengeluaran = KasPengeluaran::sum('kas_pengeluaran');
+        $kasMasuk = Kas::where('type', 'MASUK')->sum('kas');
+        $kasPengeluaran = Kas::where('type', 'MASUK')->sum('kas');
         $kas = $kasMasuk - $kasPengeluaran;
         return view('dashboard' , compact('kasMasuk', 'kasPengeluaran', 'kas'));
     }

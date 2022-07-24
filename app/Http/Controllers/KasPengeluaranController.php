@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KasPengeluaran;
+use App\Models\Kas;
 use Illuminate\Http\Request;
 
 class KasPengeluaranController extends Controller
@@ -14,8 +14,8 @@ class KasPengeluaranController extends Controller
      */
     public function index()
     {
-        $kas_pengeluaran = KasPengeluaran::get();
-        return view('kas-pengeluaran.index', ["datas" => $kas_pengeluaran]);
+        $kas = Kas::where('type', 'KELUAR')->get();
+        return view('kas-pengeluaran.index', ["datas" => $kas]);
     }
 
     /**
@@ -39,13 +39,14 @@ class KasPengeluaranController extends Controller
         $this->validate($request, [
             'tanggal' => 'required',
             'uraian' => 'required',
-            'kas_pengeluaran' => 'required'
+            'kas' => 'required'
         ]);
 
-        $datas = new KasPengeluaran();
+        $datas = new Kas();
         $datas->tanggal = $request->tanggal;
         $datas->uraian = $request->uraian;
-        $datas->kas_pengeluaran = $request->kas_pengeluaran;
+        $datas->type = 'KELUAR';
+        $datas->kas = $request->kas;
 
         // dd($datas);
 
@@ -85,17 +86,17 @@ class KasPengeluaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datas = KasPengeluaran::where('id', $id)->firstOrFail();
+        $datas = Kas::where('id', $id)->firstOrFail();
 
         $this->validate($request, [
             'tanggal' => 'required',
             'uraian' => 'required',
-            'kas_pengeluaran' => 'required'
+            'kas' => 'required'
         ]);
 
         $datas->tanggal = $request->tanggal;
         $datas->uraian = $request->uraian;
-        $datas->kas_pengeluaran = $request->kas_pengeluaran;
+        $datas->kas = $request->kas;
         $datas->update();
 
         return redirect()->back();
@@ -109,7 +110,7 @@ class KasPengeluaranController extends Controller
      */
     public function destroy($id)
     {
-        $datas = KasPengeluaran::find($id);
+        $datas = Kas::find($id);
         $datas->delete();
 
 

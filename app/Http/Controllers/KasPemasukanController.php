@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KasPemasukan;
+use App\Models\Kas;
 use Illuminate\Http\Request;
 
 class KasPemasukanController extends Controller
@@ -14,7 +14,7 @@ class KasPemasukanController extends Controller
      */
     public function index()
     {
-        $datas = KasPemasukan::get();
+        $datas = Kas::where('type', 'MASUK')->get();
         return view('kas-pemasukan.index' , compact('datas'));
         
     }
@@ -40,13 +40,14 @@ class KasPemasukanController extends Controller
         $this->validate($request , [
             'tanggal'=>'required',
             'uraian'=>'required',
-            'kas_pemasukan'=>'required'
+            'kas'=>'required'
         ]);
 
-        $datas = new KasPemasukan();
+        $datas = new Kas();
         $datas->tanggal = $request->tanggal;
         $datas->uraian = $request->uraian;
-        $datas->kas_pemasukan = $request->kas_pemasukan;
+        $datas->type = 'MASUK';
+        $datas->kas = $request->kas;
 
         // dd($datas);
 
@@ -89,17 +90,17 @@ class KasPemasukanController extends Controller
      //edit 
     public function update(Request $request, $id)
     {
-        $datas = KasPemasukan::where('id', $id)->firstOrFail();
+        $datas = Kas::where('id', $id)->firstOrFail();
 
         $this->validate($request , [
             'tanggal'=>'required',
             'uraian'=>'required',
-            'kas_pemasukan'=>'required'
+            'kas'=>'required'
         ]);
 
         $datas->tanggal = $request->tanggal;
         $datas->uraian = $request->uraian;
-        $datas->kas_pemasukan = $request->kas_pemasukan;
+        $datas->kas = $request->kas;
         // dd($datas);
         $datas->update();
 
@@ -114,7 +115,7 @@ class KasPemasukanController extends Controller
      */
     public function destroy($id)
     {
-        $datas = KasPemasukan::find($id);
+        $datas = Kas::find($id);
         $datas->delete();
         
         return redirect()->back();

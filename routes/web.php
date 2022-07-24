@@ -3,7 +3,6 @@
 use App\Http\Controllers\KasPemasukanController;
 use App\Http\Controllers\KasPengeluaranController;
 use App\Http\Controllers\rekapController;
-use App\Models\KasPengeluaran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

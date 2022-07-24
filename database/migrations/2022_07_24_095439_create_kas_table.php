@@ -4,20 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKasPengeluaransTable extends Migration
+class CreateKasTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 
      * @return void
      */
     public function up()
     {
-        Schema::create('kas_pengeluarans', function (Blueprint $table) {
+        Schema::create('kas', function (Blueprint $table) {
             $table->id();
             $table->date("tanggal");
             $table->longText("uraian");
-            $table->bigInteger("kas_pengeluaran")->nullable();
+            $table->bigInteger("kas")->nullable();
+            $table->string("type");
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateKasPengeluaransTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kas_pengeluarans');
+        Schema::dropIfExists('kas');
     }
 }

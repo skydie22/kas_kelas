@@ -39,15 +39,17 @@
 
                         
                     <tbody>
-                       
+                            @foreach ($datas as $rekap) 
                         <tr>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $rekap->tanggal }}</td>
+                            <td>{{ $rekap->uraian }}</td>
+                            <td>{{ $rekap->type == 'MASUK' ? $rekap->kas : 0 }}</td>
+                            <td>{{ $rekap->type == 'KELUAR' ? $rekap->kas : 0 }}</td>
                             <td></td>
                         </tr>
-                    
+                        @endforeach
+
                     </tbody>
 
                 </table>
