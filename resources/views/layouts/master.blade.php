@@ -49,6 +49,7 @@
                 </a>
             </li>
             
+            @hasrole('bendahara')
             <li
                 class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
@@ -59,11 +60,12 @@
                     <li class="submenu-item {{ request()->is('kas-pemasukan*') ? 'active' : '' }}">
                         <a href="{{ url ('kas-pemasukan') }}">Pemasukan</a>
                     </li>
-                    <li class="submenu-item submenu-item {{ request()->is('kas-pemasukan*') ? 'active' : '' }}">
+                    <li class="submenu-item submenu-item {{ request()->is('kas-pengeluaran*') ? 'active' : '' }}">
                         <a href="{{ url ('kas-pengeluaran') }}">Pengeluaran</a>
                     </li>
                 </ul>
             </li>
+        @endhasrole
 
             <li
             class="sidebar-item" {{ request()->is('dashboard*') ? 'active' : '' }}>

@@ -31,10 +31,10 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'] , function() {
 
-    //get
+//get
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
-Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas.pemasukan');
-Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran');
+Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas.pemasukan')->middleware('role:bendahara');
+Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran')->middleware('role:bendahara');
 
 //post
 Route::post('/kas-pemasukan/add', [App\Http\Controllers\KasPemasukanController::class, 'storePemasukan'])->name('tambah.pemasukan');
