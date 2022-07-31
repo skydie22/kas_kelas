@@ -72,6 +72,22 @@
                 <span>Laporan</span>
             </a>
         </li>
+        {{-- Only shown if user role is Ketua --}}
+        @hasrole('ketua')
+        <li
+        class="sidebar-item  has-sub">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-person"></i>
+            <span>Manajemen User</span>
+        </a>
+        <ul class="submenu ">
+            <li class="submenu-item {{ request()->is('manage-bendahara*') ? 'active' : '' }}">
+                <a href="{{ url ('manage-bendahara') }}">Bendahara</a>
+            </li>
+           
+        </ul>
+    </li>
+    @endhasrole
 
         <li class="sidebar-item {{ request()->is('logout*') ? 'active' : '' }} ">
             <a href="{{ route('logout') }}" onclick="event.preventDefault();

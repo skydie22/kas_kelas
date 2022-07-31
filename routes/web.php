@@ -3,6 +3,7 @@
 use App\Http\Controllers\KasPemasukanController;
 use App\Http\Controllers\KasPengeluaranController;
 use App\Http\Controllers\rekapController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,4 +49,11 @@ Route::delete('/kas-pengeluaran/delete/{id}', [KasPengeluaranController::class, 
 
 
 //rekap
-Route::get('/rekap' , [rekapController::class , 'index']);
+Route::get('/rekap', [rekapController::class, 'index']);
+
+// Manage user
+Route::get('/manage-bendahara', [UserController::class, 'index'])->name('users.index')->middleware('role:ketua');
+
+Route::post('/user/add', [UserController::class, 'store'])->name('users.add')->middleware('role:ketua');
+
+Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('users.delete')->middleware('role:ketua');

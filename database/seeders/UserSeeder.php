@@ -4,6 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+
+
 
 class UserSeeder extends Seeder
 {
@@ -14,18 +19,26 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::create([
+        $adminx = User::create([
             'name' => 'admin',
             'email' => 'admin@kas.com',
             'password' => bcrypt('password')
 
         ]);
 
-        $admin = User::create([
+        $bendahara = User::create([
             'name' => 'bendahara',
             'email' => 'bendahara@kas.com',
             'password' => bcrypt('password')
 
         ]);
+
+        // $permission = Permission::create(['name' => 'edit articles']);
+        $role_ketu = Role::findByName('ketua');
+        $role_bendahara = Role::findByName('bendahara');
+
+        $adminx->assignRole($role_ketu);
+
+        $bendahara->assignRole($role_bendahara);
     }
 }
