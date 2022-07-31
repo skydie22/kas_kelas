@@ -6,21 +6,21 @@
               <h5 class="modal-title" id="exampleModalLabel">Tambah User</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-      <form action={{url('user/add')}} method="POST" enctype="multipart/form-data">
+      <form action={{url('user/add')}} method="POST">
          @csrf
           @method('POST')
           <div class="modal-body">
               <div class="mb-3">
                   <label for="formGroupExampleInput" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="name">
+                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username" name="name">
               </div>
               <div class="mb-3">
                   <label for="formGroupExampleInput2" class="form-label">Email</label> 
-              <input type="email"  class="form-control" placeholder="" name="email" autocomplete="off">
+              <input type="email"  class="form-control" placeholder="username@kas.com" name="email" autocomplete="off" required>
           </div>
           <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Password</label> 
-        <input type="password"  class="form-control" placeholder="" name="password" autocomplete="off">
+            <label for="formGroupExampleInput3" class="form-label">Password</label> 
+        <input type="password"  class="form-control" placeholder="" name="password" autocomplete="new-password" required>
     </div>
       </div>
       <div class="modal-footer">

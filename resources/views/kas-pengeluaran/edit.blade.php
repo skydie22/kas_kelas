@@ -21,8 +21,8 @@
                 <input type="number"  class="form-control" placeholder="Another input placeholder" name="kas" autocomplete="off" value="{{ $data->kas }}">
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
-                <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder" name="tanggal" value="{{ $data->tanggal }}">
+                <label for="formGroupExampleInput3" class="form-label">Tanggal</label>
+                <input type="date" class="form-control" id="formGroupExampleInput3" placeholder="Another input placeholder" name="tanggal" value="{{ $data->tanggal }}">
             </div>
         </div>
         <div class="modal-footer">

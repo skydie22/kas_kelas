@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -94,6 +96,46 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+
+    public function editProfile(Request $request)
+    {
+
+        $this->validate($request, [
+            "name" => 'required|string',
+            "email" => 'required|string|unique:users,email',
+            "password" => 'required|max:40'
+        ]);
+        $id = Auth::user()->id;
+
+        $data = User::find($id);
+
+        $password_old  = $request->password_old;
+
+
+        // Validating Password
+
+        if (Hash::check($password_old, $data->password)) {
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->password =  Hash::make($request->password);
+
+            $data->update();
+            $data->assignRole('bendahara');
+
+            return redirect()->route('users.profile');
+        }
+
+        return redirect()->route('users.profile');
+    }
+
+    public function showProfile()
+    {
+        $data = Auth::user();
+
+        return view('users.profile', compact("data"));
+    }
     public function destroy($id)
     {
         $data = User::findOrFail($id);

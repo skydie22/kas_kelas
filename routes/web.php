@@ -57,3 +57,9 @@ Route::get('/manage-bendahara', [UserController::class, 'index'])->name('users.i
 Route::post('/user/add', [UserController::class, 'store'])->name('users.add')->middleware('role:ketua');
 
 Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('users.delete')->middleware('role:ketua');
+
+// Edit profile
+
+Route::get('/profile', [UserController::class, 'showProfile'])->name('users.profile')->middleware('role:bendahara');
+
+Route::put('/edit-profile', [UserController::class, 'editProfile'])->name('users.edit_profile')->middleware('role:bendahara');
