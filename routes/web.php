@@ -28,7 +28,10 @@ Route::get('/', function () {
 Auth::routes();
 
 
-//get
+
+Route::group(['middleware' => 'auth'] , function() {
+
+    //get
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas.pemasukan');
 Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran');
@@ -63,3 +66,7 @@ Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('us
 Route::get('/profile', [UserController::class, 'showProfile'])->name('users.profile')->middleware('role:bendahara');
 
 Route::put('/edit-profile', [UserController::class, 'editProfile'])->name('users.edit_profile')->middleware('role:bendahara');
+
+});
+
+
