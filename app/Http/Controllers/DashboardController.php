@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kas;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,9 +19,37 @@ class DashboardController extends Controller
         $kasMasuk = Kas::where('type', 'MASUK')->sum('kas');
         $kasPengeluaran = Kas::where('type', 'KELUAR')->sum('kas');
         $kas = $kasMasuk - $kasPengeluaran;
-        return view('dashboard' , compact('kasMasuk', 'kasPengeluaran', 'kas'));
-    }
 
+        //chart
+        $this_year = Carbon::now()->format('Y');
+        $chart_pemasukan = Kas::where('type', 'MASUK')->where('tanggal' , 'like' , $this_year . '%')->get();
+        $chart_pengeluaran = Kas::where('type', 'KELUAR')->where('tanggal' , 'like' , $this_year . '%')->get();
+
+        for ($i = 1; $i <= 12; $i++) {
+            $data_pemasukan[(int)$i] = 0;
+        }
+        foreach ($chart_pemasukan as $pemasukan) {
+            $check = explode('-', $pemasukan->tanggal)[1];
+            $data_pemasukan[(int)$check] += $pemasukan->where('type', 'MASUK')->where('tanggal', $pemasukan->tanggal)->sum('uraian');
+        }
+
+        for ($i = 1; $i <= 12; $i++) {
+            $data_pengeluaran[(int)$i] = 0;
+        }
+        foreach ($chart_pengeluaran as $pengeluaran) {
+            $check = explode('-', $pengeluaran->tanggal)[1];
+            $data_pengeluaran[(int)$check] += $pengeluaran->where('type', 'KELUAR')->where('tanggal', $pengeluaran->tanggal)->sum('uraian');
+
+
+        }
+        return view('dashboard' , compact('kasMasuk', 'kasPengeluaran', 'kas' , 'chart_pemasukan'  , 'chart_pengeluaran'))
+        ->with('data_pemasukan')
+        ->with('data_pengeluaran')
+        ;
+
+    
+        dd($data_pemasukan);
+    }
     /**
      * Show the form for creating a new resource.
      *
