@@ -25,8 +25,8 @@
                         <h1>Kas Kelas</h1>
                     </div>
                     {{-- <h4 class="auth-title">Log in.</h4> --}}
-                    <h3>Log in.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <h3>Log in.</h3><br>
+
 
                     <form action="{{ route('login') }}" method="POST">
                         @csrf

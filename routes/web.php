@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use App\Http\Controllers\KasPemasukanController;
 use App\Http\Controllers\KasPengeluaranController;
@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 

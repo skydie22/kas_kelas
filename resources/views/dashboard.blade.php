@@ -5,7 +5,7 @@
 <style>
     #chartdiv {
       width: 100%;
-      height:80%;
+      height:800px;
     }
     </style>
     
@@ -70,13 +70,24 @@
            
         </div>
 
+        <div class="col-12 col-lg-12 col-md-12">
+          <div class="card">
 
+        
+              <div class="card-body px-3 py-4-5">
         <div id="chartdiv"></div>
+           
+              </div>
+          </div>
+      </div>
 
         
     </div>
-
+{{-- @php
+  dd($kasPengeluaran)
+@endphp --}}
 </section>
+
 
 
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -84,6 +95,7 @@
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
 <script>
+
     am5.ready(function() {
     
     // Create root element
@@ -121,25 +133,114 @@
         
       })
     );
+
+    var kasMasuk = "<?php echo $kasMasuk?>";
+    var kasKeluar = "<?php echo $kasPengeluaran?>";
+
+  var data = [
+     
+    {
+      "year": "Januari",
+      "Kas Masuk":kasMasuk,
+      "Kas Keluar":kasKeluar,
+      "Total Kas" : 3333
+    }, 
+
+    {
+      "year": "Februari",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+
+    {
+      "year": "Maret",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+    {
+      "year": "April",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+
+    {
+      "year": "Mei",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+
+    {
+      "year": "Juni",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+
+    {
+      "year": "Juli",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+
+    {
+      "year": "Agustus",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+
+    {
+      "year": "September",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+
+    {
+      "year": "Oktober",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+    {
+      "year": "November",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
+
+    {
+      "year": "Desember",
+      "Kas Masuk":19000,
+      "Kas Keluar":3400,
+      "Total Kas" : 3333
+    }, 
     
-    var data = [
-    //   {
-    //   "year": "2021",
-    //   "europe": 22.5,
-    //   "namerica": 2.5,
-    //   "asia": 2.1,
-    //   "lamerica": 1,
-    //   "meast": 0.8,
-    //   "africa": 0.4
-    // }, {
+    // {
     //   "year": "2022",
-    //   "europe": 2.0,
-    //   "namerica": 2.7,
-    //   "asia": 2.2,
-    //   "lamerica": 0.5,
-    //   "meast": 0.4,
-    //   "africa": 0.3
-    // }, {
+    //   "europe": 2.8,
+    //   "namerica": 2.9,
+    //   "asia": 2.4,
+    //   "lamersica": 0.3,
+    //   "meast": 0.9,
+    //   "africa": 0.5
+    // },
+
+    // {
     //   "year": "2023",
     //   "europe": 2.8,
     //   "namerica": 2.9,
@@ -149,11 +250,6 @@
     //   "africa": 0.5
     // }
     
-
-// 
-
-
-
   ]
     
     chart.plotContainer.get("background").setAll({
@@ -199,12 +295,12 @@ yRenderer.grid.template.setAll({
 });
 yRenderer.labels.template.setAll({
   fill: am5.color(0x25396f),
-  fontSize: "1.5em"
+  fontSize: "1.0em"
 });
 var xRenderer = xAxis.get("renderer");
 xRenderer.labels.template.setAll({
   fill: am5.color(0x25396f),
-  fontSize: "1.5em"
+  fontSize: "1.0em"
 });
 
 
@@ -244,7 +340,7 @@ xRenderer.labels.template.setAll({
 // })
 
 tooltip.get("background").setAll({
-  fill: am5.color(0xffffff),
+  fill: am5.color(0x000000),
   fillOpacity: 0.8,
   stroke: am5.color(0x000000),
   strokeOpacity: 0.8
@@ -284,10 +380,14 @@ series.set("tooltip", tooltip);
       legend.data.push(series);
     }
     
-    makeSeries("Total Kas", "europe");
-    makeSeries("Kas Masuk", "namerica");
-    makeSeries("Kas Keluar", "asia");
-    // makeSeries("Latin America", "lamerica");
+    // makeSeries("Total Kas", "total");
+    // makeSeries("Kas Masuk", "masuk");
+    // makeSeries("Kas Keluar", "keluar");
+
+
+    makeSeries("Total Kas", "Total Kas");
+    makeSeries("Kas Masuk", "Kas Masuk");
+    makeSeries("Kas Keluar", "Kas Keluar");
     // makeSeries("Middle East", "meast");
     // makeSeries("Africa", "africa");
     

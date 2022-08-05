@@ -24,7 +24,7 @@
 
             <div class="card-body">
                 <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#">
-                    Export To Pdf
+                    Export To Pdf <i class="bi bi-file-pdf-fill"></i>
                 </button>
                 <table class="table table-striped" id="table1">
                     <thead>
