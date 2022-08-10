@@ -19,7 +19,9 @@
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
-                <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="" name="tanggal">
+                <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="" name="tanggal" >
+
+                {{-- max="2022-12-31" min="2022-12-31" --}}
             </div>
         </div>
         <div class="modal-footer">

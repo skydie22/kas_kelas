@@ -4,11 +4,11 @@
 
 <style>
     #chartdiv {
-      width: 100%;
-      height:800px;
+        width: 100%;
+        height: 800px;
     }
-    </style>
-    
+</style>
+
 <div class="page-content">
     <h3>Dashboard</h3>
 </div>
@@ -44,7 +44,7 @@
                             <div class="col-md-8">
                                 <h6 class="text-muted font-semibold">Kas Masuk</h6>
                                 <h6 class="font-extrabold mb-0">@currency($kasMasuk)</h6>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -67,25 +67,27 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
 
         <div class="col-12 col-lg-12 col-md-12">
-          <div class="card">
+            <div class="card">
 
-        
-              <div class="card-body px-3 py-4-5">
-        <canvas id="masjid_b"></canvas>
-           
-              </div>
-          </div>
-      </div>
 
-        
-    </div>
+                <div class="card-body px-3 py-4-5">
+                    <canvas id="masjid_b"></canvas>
+
+                </div>
+            </div>
+        </div>
+
 {{-- @php
-  dd($kasPengeluaran)
+    
+dd(    $data_pengeluaran
+)
 @endphp --}}
+    </div>
+
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -93,69 +95,64 @@
 {{-- CHART Masjid --}}
 
 
-
 <script>
-    const b_masjid = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-    ];
-    const b_masjidd = {
-        labels: b_masjid,
-        datasets: [{
-            label: 'Pemasukan',
-            backgroundColor: '#435EBE',
-            borderRadius: 4,
-            barThickness: 10,
-            
-            data: [
-              
 
-               
-            ]
-        }, {
-            label: 'Pengeluaran',
-            backgroundColor: '#43beaf',
-            borderRadius: 4,
-            barThickness: 10,
-            data: [
-            
-            ],
-        }]
-    };
-    const bar_masjid = {
-        type: 'bar',
-        data: b_masjidd,
-        options: {
-            responsive: true,
-            indexAxis: 'x',
-            plugins: {
-            legend: {
-                position: 'bottom',
-                labels: {
-      usePointStyle: true,
-    },
-            },},
-        }
-    };
+
+    const labels = [
+        'January'
+        , 'February'
+        , 'March'
+        , 'April'
+        , 'May'
+        , 'June'
+        , 'July'
+        , 'Aug'
+        , 'Sep'
+        , 'Oct'
+        , 'Nov'
+        , 'Dec'
+    ];
+    const data = {
+  labels: labels,
+  datasets: [
+    {
+    label: 'pemasukan',
+    data: [{{ $data_pemasukan[1] }}, {{ $data_pemasukan[2] }}, {{ $data_pemasukan[3] }}, {{ $data_pemasukan[4] }}, {{ $data_pemasukan[5] }}, {{ $data_pemasukan[6] }}, {{ $data_pemasukan[7] }} , {{ $data_pemasukan[8] }}, {{ $data_pemasukan[9] }} , {{ $data_pemasukan[10] }} , {{ $data_pemasukan[11] }} , {{ $data_pemasukan[12] }}],
+    backgroundColor: '#435EBE',
+    borderColor: "rgba(0,0,0,0)",
+    borderWidth: 5
+  },
+  {
+    label: 'pengeluaran',
+    data: [{{ $data_pengeluaran[1] }}, {{ $data_pengeluaran[2] }}, {{ $data_pengeluaran[3] }}, {{ $data_pengeluaran[4] }}, {{ $data_pengeluaran[5] }}, {{ $data_pengeluaran[6] }}, {{ $data_pengeluaran[7] }} , {{ $data_pengeluaran[8] }}, {{ $data_pengeluaran[9] }} , {{ $data_pengeluaran[10] }} , {{ $data_pengeluaran[11] }} , {{ $data_pengeluaran[12] }}],
+    backgroundColor: '#43beaf',
+    borderColor: "rgba(0,0,0,0)",
+    borderWidth: 5
+  }
+]
+};
+    const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  },
+};
+
 </script>
 
 <script>
     const bulanan_masjid = new Chart(
-        document.getElementById('masjid_b'),
-        bar_masjid
+        document.getElementById('masjid_b')
+        , config
     );
+
 </script>
 
 
 
-@endsection 
+@endsection

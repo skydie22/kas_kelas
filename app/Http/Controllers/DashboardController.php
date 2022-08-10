@@ -24,14 +24,30 @@ class DashboardController extends Controller
         $this_year = Carbon::now()->format('Y');
         $chart_pemasukan = Kas::where('type', 'MASUK')->where('tanggal' , 'like' , $this_year . '%')->get();
         $chart_pengeluaran = Kas::where('type', 'KELUAR')->where('tanggal' , 'like' , $this_year . '%')->get();
+        // dd($chart_pemasukan);
+        // dd($chart_pengeluaran);
+
+    
 
         for ($i = 1; $i <= 12; $i++) {
+         
             $data_pemasukan[(int)$i] = 0;
+
         }
+
+
+        // $data_pengeluaran = [];
+        // $data_pemasukan = [];
         foreach ($chart_pemasukan as $pemasukan) {
             $check = explode('-', $pemasukan->tanggal)[1];
-            $data_pemasukan[(int)$check] += $pemasukan->where('type', 'MASUK')->where('tanggal', $pemasukan->tanggal)->sum('kas');
+            
+
+            $data_pemasukan[(int)$check] = $pemasukan->where('type', 'MASUK')->where('tanggal', $pemasukan->tanggal)->sum('kas');
+
+
+            
         }
+        // dd($data_pemasukan);
 
         for ($i = 1; $i <= 12; $i++) {
             $data_pengeluaran[(int)$i] = 0;
@@ -44,12 +60,8 @@ class DashboardController extends Controller
 
         // dd($data_pemasukan);
 
-        $data_pemasukan = (object)$data_pemasukan;
         
-        return view('dashboard' , compact('kasMasuk', 'kasPengeluaran', 'kas'))
-        ->with('data_pemasukan')
-        ->with('data_pengeluaran')
-        ;
+        return view('dashboard' , compact('kasMasuk', 'kasPengeluaran', 'kas','data_pemasukan','data_pengeluaran'));
 
     
     }
