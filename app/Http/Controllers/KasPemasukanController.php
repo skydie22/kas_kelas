@@ -37,6 +37,8 @@ class KasPemasukanController extends Controller
      */
     public function storePemasukan(Request $request)
     {
+
+        
         $this->validate($request , [
             'tanggal'=>'required',
             'uraian'=>'required',
@@ -53,7 +55,7 @@ class KasPemasukanController extends Controller
 
         $datas->save();
 
-        return redirect()->back();
+        return redirect()->back()->with(['succsess' => "Berhasil menambahkan data!"]);
 
     }
 
@@ -104,7 +106,7 @@ class KasPemasukanController extends Controller
         // dd($datas);
         $datas->update();
 
-        return redirect()->back();
+        return redirect()->back()->with(['succsess' => "Berhasil Mengedit Data!"]);
     }
 
     /**
@@ -118,7 +120,7 @@ class KasPemasukanController extends Controller
         $datas = Kas::find($id);
         $datas->delete();
         
-        return redirect()->back();
+        return redirect()->back()->with(['succsess' => "Berhasil Delete Data!"]);
         
     }
 }

@@ -64,3 +64,18 @@
 @include('kas-pengeluaran/delete')
 @include('kas-pengeluaran/edit')
 @endsection
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="sweetalert2.min.js"></script>
+@if(Session::has('succsess'))
+
+<script>
+    Swal.fire({
+  title: 'Succsess',
+  text: "{{ Session::get('succsess') }}",
+  icon: 'success',
+  confirmButtonText: 'Okay'
+})
+</script>
+
+@endif

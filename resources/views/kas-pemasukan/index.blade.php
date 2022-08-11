@@ -60,7 +60,38 @@
 
     </section>
 </div>
+
+
+
+
+
+
+
+{{-- <script>
+    var msg = {{Session::get('success')}};
+   if(msg){
+    console.log('b')
+   }
+  </script> --}}
+
 @include('kas-pemasukan/create')
 @include('kas-pemasukan/edit')
 @include('kas-pemasukan/delete')
 @endsection
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="sweetalert2.min.js"></script>
+@if(Session::has('succsess'))
+
+<script>
+    Swal.fire({
+  title: 'Succsess',
+  text: "{{ Session::get('succsess') }}",
+  icon: 'success',
+  confirmButtonText: 'Okay'
+})
+</script>
+
+@endif

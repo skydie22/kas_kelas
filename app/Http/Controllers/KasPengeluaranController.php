@@ -52,7 +52,7 @@ class KasPengeluaranController extends Controller
 
         $datas->save();
 
-        return redirect()->back();
+        return redirect()->back()->with(['succsess' => "Berhasil Tambah Data!"]);
     }
 
     /**
@@ -99,7 +99,7 @@ class KasPengeluaranController extends Controller
         $datas->kas = $request->kas;
         $datas->update();
 
-        return redirect()->back();
+        return redirect()->back()->with(['succsess' => "Berhasil Mengedit Data!"]);
     }
 
     /**
@@ -114,6 +114,6 @@ class KasPengeluaranController extends Controller
         $datas->delete();
 
 
-        return redirect()->back();
+        return redirect()->back()->with(['succsess' => "Berhasil Delete Data!"]);
     }
 }
