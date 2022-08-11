@@ -14,8 +14,10 @@ class KasPengeluaranController extends Controller
      */
     public function index()
     {
-        $kas = Kas::where('type', 'KELUAR')->get();
-        return view('kas-pengeluaran.index', ["datas" => $kas]);
+        $datas = Kas::where('type', 'KELUAR')->get();
+        $datas2 = Kas::where('type', 'MASUK')->get();
+
+        return view('kas-pengeluaran.index', compact("datas"));
     }
 
     /**
@@ -52,7 +54,7 @@ class KasPengeluaranController extends Controller
 
         $datas->save();
 
-        return redirect()->back()->with(['succsess' => "Berhasil Tambah Data!"]);
+        return redirect()->back()->with(['success' => "Berhasil Mengedit Data!"]);
     }
 
     /**
@@ -99,7 +101,7 @@ class KasPengeluaranController extends Controller
         $datas->kas = $request->kas;
         $datas->update();
 
-        return redirect()->back()->with(['succsess' => "Berhasil Mengedit Data!"]);
+        return redirect()->back()->with(['success' => "Berhasil Mengedit Data!"]);
     }
 
     /**
@@ -114,6 +116,6 @@ class KasPengeluaranController extends Controller
         $datas->delete();
 
 
-        return redirect()->back()->with(['succsess' => "Berhasil Delete Data!"]);
+        return redirect()->back()->with(['success' => "Berhasil Delete Data!"]);
     }
 }

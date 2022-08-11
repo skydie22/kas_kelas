@@ -63,6 +63,7 @@ class DashboardController extends Controller
         
         return view('dashboard' , compact('kasMasuk', 'kasPengeluaran', 'kas','data_pemasukan','data_pengeluaran'));
 
+
     
     }
     /**

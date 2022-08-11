@@ -55,7 +55,7 @@ class KasPemasukanController extends Controller
 
         $datas->save();
 
-        return redirect()->back()->with(['succsess' => "Berhasil menambahkan data!"]);
+        return redirect()->back()->with(['success' => "Berhasil menambahkan data!"]);
 
     }
 
@@ -106,7 +106,7 @@ class KasPemasukanController extends Controller
         // dd($datas);
         $datas->update();
 
-        return redirect()->back()->with(['succsess' => "Berhasil Mengedit Data!"]);
+        return redirect()->back()->with(['success' => "Berhasil Mengedit Data!"]);
     }
 
     /**
@@ -120,7 +120,7 @@ class KasPemasukanController extends Controller
         $datas = Kas::find($id);
         $datas->delete();
         
-        return redirect()->back()->with(['succsess' => "Berhasil Delete Data!"]);
+        return redirect()->back()->with(['success' => "Berhasil Delete Data!"]);
         
     }
 }

@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="tambah-pengeluaran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
@@ -15,7 +14,7 @@
               </div>
               <div class="mb-3">
                   <label for="formGroupExampleInput2" class="form-label">Pengeluaran</label> 
-              <input type="number"  class="form-control" placeholder="" name="kas" autocomplete="off">
+              <input type="number" min="1" class="form-control" placeholder="" name="kas" autocomplete="off">
           </div>
           <div class="mb-3">
               <label for="formGroupExampleInput2" class="form-label">Tanggal</label>

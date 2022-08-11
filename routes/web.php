@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KasPemasukanController;
 use App\Http\Controllers\KasPengeluaranController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\rekapController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[LandingController::class,'index']);
 
 
 
