@@ -23,9 +23,10 @@
         <div class="card">
 
             <div class="card-body">
-                <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#">
-                    Export To Pdf <i class="bi bi-file-pdf-fill"></i>
-                </button>
+
+                    <a class="btn btn-danger mb-3" href="{{ route('export.pdf') }}" style="color:white" target="_blank">
+                    Export To Pdf</a>
+    
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
