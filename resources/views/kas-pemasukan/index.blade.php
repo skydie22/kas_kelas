@@ -87,7 +87,7 @@
 
 <script>
     Swal.fire({
-  title: 'success',
+  title: 'Success',
   text: "{{ Session::get('success') }}",
   icon: 'success',
   confirmButtonText: 'Okay'

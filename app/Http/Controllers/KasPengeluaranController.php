@@ -54,7 +54,7 @@ class KasPengeluaranController extends Controller
 
         $datas->save();
 
-        return redirect()->back()->with(['success' => "Berhasil Mengedit Data!"]);
+        return redirect()->back()->with(['success' => "Berhasil Menambahkan Data!"]);
     }
 
     /**

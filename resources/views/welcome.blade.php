@@ -31,28 +31,28 @@
             </nav>
         </header>
         <section id="hero" class='position-relative d-flex align-items-center justify-content-center'>
-            <div class="container">
+            <div class="container" style="z-index: 3">
                 <div class="row">
                     <div class="col-md-6 mx-auto">
                         <div class="text-center"><br>
                             <h1>Welcome to Kas Kelas</h1>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-3 col-6 py-4">
+                                        <h3>@currency($kasMasuk)</h3>
+                                        <h6>Total Kas Masuk</h6>
+                                    </div>
+                                    <div class="col-md-3 col-6 py-4">
+                                        <h3>@currency($kasPengeluaran)</h3>
+                                        <h6>Total Kas Keluar</h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
            
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-3 col-6 py-4">
-                            <h3>@currency($kasMasuk)</h3>
-                            <h6>Total Kas Masuk</h6>
-                        </div>
-                        <div class="col-md-3 col-6 py-4">
-                            <h3>@currency($kasPengeluaran)</h3>
-                            <h6>Total Kas Keluar</h6>
-                        </div>
-                    </div>
-                </div>
         </section>
 
     </div>

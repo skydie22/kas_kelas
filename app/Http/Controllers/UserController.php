@@ -50,8 +50,9 @@ class UserController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = Hash::make($request->password);
-        $data->save();
         $data->assignRole('bendahara');
+
+        $data->save();
 
         return redirect()->route('users.index');
     }
@@ -115,7 +116,6 @@ class UserController extends Controller
 
 
         // Validating Password
-
         if (Hash::check($password_old, $data->password)) {
             $data->name = $request->name;
             $data->email = $request->email;
@@ -124,10 +124,10 @@ class UserController extends Controller
             $data->update();
             $data->assignRole('bendahara');
 
-            return redirect()->route('users.profile');
+            return redirect()->route('users.profile')->with(['success' => "Berhasil Mengedit Profile!"]);
         }
 
-        return redirect()->route('users.profile');
+        return redirect()->route('users.profile')->with(['error' => "Gagal Mengedit Profile"]);
     }
 
     public function showProfile()
