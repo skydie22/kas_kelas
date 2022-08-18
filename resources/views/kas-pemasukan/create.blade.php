@@ -11,15 +11,15 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Uraian</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="uraian">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="uraian" required>
                 </div>
                 <div class="mb-3">
                     <label for="formGroupExampleInput2" class="form-label">Pemasukan</label> 
-                <input type="number" min ="1" class="form-control" placeholder="" name="kas" autocomplete="off">
+                <input type="number" min ="1" class="form-control" placeholder="" name="kas" autocomplete="off" required>
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">Tanggal</label>
-                <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="" name="tanggal" >
+                <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="" name="tanggal" required>
 
                 {{-- max="2022-12-31" min="2022-12-31" --}}
             </div>
