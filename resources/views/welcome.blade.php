@@ -38,11 +38,11 @@
                             <h1>Welcome to Kas Kelas</h1>
                             <div class="container">
                                 <div class="row justify-content-center">
-                                    <div class="col-md-3 col-6 py-4">
+                                    <div class="col-md-6 col-6 py-4">
                                         <h3>@currency($kasMasuk)</h3>
                                         <h6>Total Kas Masuk</h6>
                                     </div>
-                                    <div class="col-md-3 col-6 py-4">
+                                    <div class="col-md-6 col-6 py-4">
                                         <h3>@currency($kasPengeluaran)</h3>
                                         <h6>Total Kas Keluar</h6>
                                     </div>
