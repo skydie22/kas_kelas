@@ -1,43 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>EXPORT DATA KAS</title>
+	<title> Laporan PDF Kas</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="form-group">
-        <p align="center"><b>Laporan Data Kas</b></p>
-
-        <table class="table table-striped table-hover mt-5">
-            <thead class="table-dark">
-                <tr>
-                    <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Uraian</th>
-                    <th>Pemasukan</th>
-                    <th>Pengeluaran</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($datasExport as $rekap) 
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $rekap->tanggal }}</td>
-                    <td>{{ $rekap->uraian }}</td>
-                    <td>{{ $rekap->type == 'MASUK' ? $rekap->kas : 0 }}</td>
-                    <td>{{ $rekap->type == 'KELUAR' ? $rekap->kas : 0 }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    </div>
-    <script type="text/javascript">
-        window.print();
-    </script>
+	<style type="text/css">
+		table tr td,
+		table tr th{
+			font-size: 9pt;
+		}
+	</style>
+	<center>
+		<h5>Laporan Kas Pdf</h5>
+	</center>
+ 
+    <table class="table table-striped table-hover mt-5">
+        <thead class="table-dark">
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Uraian</th>
+                <th>Pemasukan</th>
+                <th>Pengeluaran</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($datasExport as $rekap) 
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $rekap->tanggal }}</td>
+                <td>{{ $rekap->uraian }}</td>
+                <td>{{ $rekap->type == 'MASUK' ? $rekap->kas : 0 }}</td>
+                <td>{{ $rekap->type == 'KELUAR' ? $rekap->kas : 0 }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+ 
 </body>
 </html>

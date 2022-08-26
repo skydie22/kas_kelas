@@ -53,7 +53,7 @@ Route::delete('/kas-pengeluaran/delete/{id}', [KasPengeluaranController::class, 
 
 //rekap
 Route::get('/rekap', [rekapController::class, 'index']);
-Route::get('/export-pdf' , [rekapController::class , 'exportData'])->name('export.pdf');
+Route::get('/export-pdf' , [rekapController::class , 'exportData'])->name('export.pdf'); 
 
 // Manage user
 Route::get('/manage-bendahara', [UserController::class, 'index'])->name('users.index')->middleware('role:ketua');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kas;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class rekapController extends Controller
 {
@@ -16,6 +18,8 @@ class rekapController extends Controller
 
     public function exportData() {
         $datasExport = Kas::all();
-        return view('export-pdf' , compact('datasExport'));
+        $pdf = PDF::loadview('export-pdf',['datasExport'=>$datasExport]);
+
+        return $pdf->download('laporan-kas.pdf');
     }
 }
