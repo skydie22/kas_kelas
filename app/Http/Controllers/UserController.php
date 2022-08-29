@@ -54,8 +54,10 @@ class UserController extends Controller
 
         $data->save();
 
-        return redirect()->route('users.index');
-    }
+        return redirect()->route('users.index')->with(['success' => "Berhasil Menambah User"]);
+
+    }           
+
 
     /**
      * Display the specified resource.

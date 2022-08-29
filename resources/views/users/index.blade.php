@@ -45,5 +45,19 @@
 
 @include('users/create')
 @include('users/delete')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="sweetalert2.min.js"></script>
+@if(Session::has('success'))
 
+<script>
+    Swal.fire({
+  title: 'Success',
+  text: "{{ Session::get('success') }}",
+  icon: 'success',
+  confirmButtonText: 'Okay'
+})
+</script>
+
+@endif
 @endsection
