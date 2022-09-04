@@ -19,12 +19,19 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $adminx = User::create([
-            'name' => 'admin',
-            'email' => 'admin@kas.com',
+        $ketua_kelas = User::create([
+            'name' => 'ketua',
+            'email' => 'ketua@kas.com',
             'password' => bcrypt('password')
 
         ]);
+
+        // $pengurus_sekolah = User::create([
+        //     'name' => 'admin',
+        //     'email' => 'pengurus_sekolah@kas.com',
+        //     'password' => bcrypt('password')
+
+        // ]);
 
         $bendahara = User::create([
             'name' => 'bendahara',
@@ -34,11 +41,13 @@ class UserSeeder extends Seeder
         ]);
 
         // $permission = Permission::create(['name' => 'edit articles']);
-        $role_ketu = Role::findByName('ketua');
+        $role_ketua = Role::findByName('ketua');
         $role_bendahara = Role::findByName('bendahara');
+        // $role_pengurusSekolah = Role::findByName('pengurus_sekolah');
 
-        $adminx->assignRole($role_ketu);
+        $ketua_kelas->assignRole($role_ketua);
 
         $bendahara->assignRole($role_bendahara);
+        // $pengurus_sekolah->assignRole($role_pengurusSekolah);
     }
 }

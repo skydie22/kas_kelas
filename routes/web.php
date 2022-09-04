@@ -1,10 +1,11 @@
-    <?php
+<?php
 
 use App\Http\Controllers\KasPemasukanController;
 use App\Http\Controllers\KasPengeluaranController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\rekapController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[LandingController::class,'index']);
+Route::get('kelas/{slug}', [LandingController::class, 'index']);
 
 
 
@@ -29,45 +30,53 @@ Auth::routes();
 
 
 
-Route::group(['middleware' => 'auth'] , function() {
+Route::group(['middleware' => 'auth'], function () {
 
-//get
-Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
-Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas.pemasukan')->middleware('role:bendahara');
-Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran')->middleware('role:bendahara');
+    //get
+    Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+    Route::get('/kas-pemasukan', [App\Http\Controllers\KasPemasukanController::class, 'index'])->name('kas.pemasukan')->middleware('role:bendahara');
+    Route::get('/kas-pengeluaran', [KasPengeluaranController::class, 'index'])->name('kas.pengeluaran')->middleware('role:bendahara');
 
-//post
-Route::post('/kas-pemasukan/add', [App\Http\Controllers\KasPemasukanController::class, 'storePemasukan'])->name('tambah.pemasukan');
-Route::post('/kas-pengeluaran/add', [App\Http\Controllers\KasPengeluaranController::class, 'storePengeluaran'])->name('tambah.pengeluaran');
-
-
-//put
-Route::put('/kas-pemasukan/edit/{id}', [KasPemasukanController::class, 'update']);
-Route::put('/kas-pengeluaran/edit/{id}', [KasPengeluaranController::class, 'update']);
+    //post
+    Route::post('/kas-pemasukan/add', [App\Http\Controllers\KasPemasukanController::class, 'storePemasukan'])->name('tambah.pemasukan');
+    Route::post('/kas-pengeluaran/add', [App\Http\Controllers\KasPengeluaranController::class, 'storePengeluaran'])->name('tambah.pengeluaran');
 
 
-//delete
-Route::delete('/kas-pemasukan/delete/{id}', [KasPemasukanController::class, 'destroy']);
-Route::delete('/kas-pengeluaran/delete/{id}', [KasPengeluaranController::class, 'destroy']);
+    //put
+    Route::put('/kas-pemasukan/edit/{id}', [KasPemasukanController::class, 'update']);
+    Route::put('/kas-pengeluaran/edit/{id}', [KasPengeluaranController::class, 'update']);
 
 
-//rekap
-Route::get('/rekap', [rekapController::class, 'index']);
-Route::get('/export-pdf' , [rekapController::class , 'exportData'])->name('export.pdf'); 
+    //delete
+    Route::delete('/kas-pemasukan/delete/{id}', [KasPemasukanController::class, 'destroy']);
+    Route::delete('/kas-pengeluaran/delete/{id}', [KasPengeluaranController::class, 'destroy']);
 
-// Manage user
-Route::get('/manage-bendahara', [UserController::class, 'index'])->name('users.index')->middleware('role:ketua');
 
-Route::post('/user/add', [UserController::class, 'store'])->name('users.add')->middleware('role:ketua');
+    //rekap
+    Route::get('/rekap', [rekapController::class, 'index']);
+    Route::get('/export-pdf', [rekapController::class, 'exportData'])->name('export.pdf');
 
-Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('users.delete')->middleware('role:ketua');
+    // Manage user
+    Route::get('/manage-bendahara', [UserController::class, 'index'])->name('users.index')->middleware('role:ketua');
 
-// Edit profile
+    Route::post('/user/add', [UserController::class, 'store'])->name('users.add')->middleware('role:ketua');
 
-Route::get('/profile', [UserController::class, 'showProfile'])->name('users.profile')->middleware('role:bendahara');
+    Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('users.delete')->middleware('role:ketua');
 
-Route::put('/edit-profile', [UserController::class, 'editProfile'])->name('users.edit_profile')->middleware('role:bendahara');
+    // Edit profile
 
+    Route::get('/profile', [UserController::class, 'showProfile'])->name('users.profile')->middleware('role:bendahara');
+
+    Route::put('/edit-profile', [UserController::class, 'editProfile'])->name('users.edit_profile')->middleware('role:bendahara');
 });
 
 
+// Grouping Admin
+
+Route::get('/admin', [AdminController::class, 'showAdminLoginForm'])->name('admin.show.login');
+
+Route::post('/admin', [AdminController::class, 'adminLogin'])->name('admin.login');
+
+// Route::group(['middleware' => 'auth'], function () {
+//     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.index')->middleware('role:pengurus_sekolah');
+// });

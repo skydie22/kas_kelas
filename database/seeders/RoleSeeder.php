@@ -23,5 +23,9 @@ class RoleSeeder extends Seeder
             'name' => 'bendahara',
             'guard_name' => 'web'
         ]);
+        // Role::create([
+        //     'name' => 'pengurus_sekolah',
+        //     'guard_name' => 'web'
+        // ]);
     }
 }

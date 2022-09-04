@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kas Kelas</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title> Kas {{$kelas}}</title>
+    <link rel="stylesheet" href="{{url('assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Kas Kelas</a>
+                    <a class="navbar-brand" href="#">Kas {{$kelas}}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-md-6 mx-auto">
                         <div class="text-center"><br>
-                            <h1>Welcome to Kas Kelas</h1>
+                            <h1>Welcome to Kas {{$kelas}}</h1>
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-md-6 col-6 py-4">
