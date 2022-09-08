@@ -12,6 +12,7 @@ class Kas extends Model
     protected $fillable = [
         'tanggal',
         'uraian',
-        'kas'
+        'kas',
+        'type'
     ];
 }

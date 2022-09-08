@@ -55,8 +55,7 @@ class UserController extends Controller
         $data->save();
 
         return redirect()->route('users.index')->with(['success' => "Berhasil Menambah User"]);
-
-    }           
+    }
 
 
     /**
@@ -105,17 +104,20 @@ class UserController extends Controller
     public function editProfile(Request $request)
     {
 
+
         $this->validate($request, [
             "name" => 'required|string',
             "email" => 'required|string|email',
-            "password" => 'required|max:40'
+            "password" => 'required|max:40',
+            "foto" => "file|max:3072",
         ]);
+
+
         $id = Auth::user()->id;
 
         $data = User::find($id);
 
         $password_old  = $request->password_old;
-
 
         // Validating Password
         if (Hash::check($password_old, $data->password)) {
@@ -123,11 +125,31 @@ class UserController extends Controller
             $data->email = $request->email;
             $data->password =  Hash::make($request->password);
 
-            $data->update();
-            $data->assignRole('bendahara');
+            $filename = "";
+            // $data->foto = $filename;
+            if ($request->foto == "") {
 
-            return redirect()->route('users.profile')->with(['success' => "Berhasil Mengedit Profile!"]);
+                $data->update();
+                $data->assignRole('bendahara');
+                return redirect()->route('users.profile')->with(['success' => "Berhasil Mengedit Profile"]);
+            } else {
+                if ($request->hasFile('foto')) {
+                    $filename = $request->file('foto')->getClientOriginalName();
+                    $request->file('foto')->storeAs('/galeri', $filename);
+
+                    $data->foto = $filename;
+                    $data->update();
+                    $data->assignRole('bendahara');
+
+
+                    return redirect()->route('users.profile')->with(['success' => "Berhasil Mengedit Profile"]);
+                }
+            }
+
+            // Image Logic
+
         }
+
 
         return redirect()->route('users.profile')->with(['error' => "Gagal Mengedit Profile"]);
     }
