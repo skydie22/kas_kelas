@@ -15,7 +15,23 @@
 		<h5>Laporan Kas Pdf</h5>
 	</center>
  
-    <table class="table table-striped table-hover mt-5">
+    <table class="table table-hover mt-5">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Total Kas</th>
+                <th class="text-center">Sisa Kas</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">@currency($datasMasuk)</td>
+                <td class="text-center">@currency($datasSisa)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-hover mt-5">
         <thead class="table-dark">
             <tr>
                 <th>No</th>
@@ -33,12 +49,12 @@
                 <td>{{ $rekap->uraian }}</td>
                 @if( $rekap->type == 'MASUK' )
 
-                <td>{{ $rekap->kas }}</td>
+                <td class="text-success">@currency( $rekap->kas)</td>
                 <td>Pemasukan</td>
 
                 @elseif($rekap->type == 'KELUAR' )
 
-                <td>{{ $rekap->kas }}</td>
+                <td class="text-danger" >@currency( $rekap->kas)</td>
                 <td>Pengeluaran</td>
 
 

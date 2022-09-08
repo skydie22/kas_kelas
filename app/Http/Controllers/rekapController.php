@@ -18,7 +18,11 @@ class rekapController extends Controller
 
     public function exportData() {
         $datasExport = Kas::all();
-        $pdf = PDF::loadview('export-pdf',['datasExport'=>$datasExport]);
+        $datasMasuk = Kas::where('type' , 'MASUK')->sum('kas');
+        $datasKeluar = Kas::where('type' , 'KELUAR')->sum('kas');
+        $datasSisa = $datasMasuk - $datasKeluar;
+
+        $pdf = PDF::loadview('export-pdf',['datasExport'=>$datasExport , 'datasSisa'=>$datasSisa , 'datasMasuk'=>$datasMasuk]);
 
         return $pdf->download('laporan-kas.pdf');
     }
