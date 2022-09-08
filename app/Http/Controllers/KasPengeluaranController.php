@@ -15,7 +15,6 @@ class KasPengeluaranController extends Controller
     public function index()
     {
         $datas = Kas::where('type', 'KELUAR')->get();
-        $datas2 = Kas::where('type', 'MASUK')->get();
 
         return view('kas-pengeluaran.index', compact("datas"));
     }
@@ -45,6 +44,11 @@ class KasPengeluaranController extends Controller
         ]);
 
         $datas = new Kas();
+        
+        $datasKeluar = Kas::where('type', 'KELUAR')->sum('kas')
+        $datasMasuk = Kas::where('type', 'MASUK')->sum('kas');
+        $total = $datasMasuk -$datasKeluar;
+
         $datas->tanggal = $request->tanggal;
         $datas->uraian = $request->uraian;
         $datas->type = 'KELUAR';
@@ -52,9 +56,14 @@ class KasPengeluaranController extends Controller
 
         // dd($datas);
 
-        $datas->save();
-
-        return redirect()->back()->with(['success' => "Berhasil Menambahkan Data!"]);
+        if ($datas->kas >= $total) {
+            return redirect()->back()->with(['fail' => "gagal Menambahkan Data!"]);
+        } else {
+            $datas->save();
+            return redirect()->back()->with(['success' => "Berhasil Menambahkan Data!"]);
+            
+        }
+        
     }
 
     /**

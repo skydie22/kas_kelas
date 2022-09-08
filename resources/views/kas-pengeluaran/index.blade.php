@@ -75,7 +75,23 @@
   text: "{{ Session::get('success') }}",
   icon: 'success',
   confirmButtonText: 'Okay'
+
+  
 })
 </script>
+@elseif(Session::has('fail'))
+
+
+<script>
+    Swal.fire({
+  title: 'Gagal',
+  text: "{{ Session::get('fail') }}",
+  icon: 'error',
+  confirmButtonText: 'Okay'
+
+  
+})
+</script>
+
 
 @endif
