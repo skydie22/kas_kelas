@@ -45,7 +45,7 @@ class KasPengeluaranController extends Controller
 
         $datas = new Kas();
         
-        $datasKeluar = Kas::where('type', 'KELUAR')->sum('kas')
+        $datasKeluar = Kas::where('type', 'KELUAR')->sum('kas');
         $datasMasuk = Kas::where('type', 'MASUK')->sum('kas');
         $total = $datasMasuk -$datasKeluar;
 

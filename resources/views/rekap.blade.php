@@ -33,8 +33,8 @@
                             <th>no</th>
                             <th>Tanggal</th>
                             <th>Uraian</th>
-                            <th>Pemasukan</th>
-                            <th>Pengeluaran</th>
+                            <th>Saldo</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
 
@@ -47,8 +47,21 @@
                             <td>{{ $rekap->uraian }}</td>
                             {{-- <td>{{ $rekap->type == 'MASUK' ? $rekap->kas : 0 }}</td> --}}
                             {{-- <td>{{ $rekap->type == 'KELUAR' ? $rekap->kas : 0 }}</td> --}}
-                            <td>@currency($rekap->type == 'MASUK' ? $rekap->kas : 0)</td>
-                            <td>@currency($rekap->type == 'KELUAR' ? $rekap->kas : 0)</td>
+
+                            @if( $rekap->type == 'MASUK' )
+
+                            <td>{{ $rekap->kas }}</td>
+                            <td>Pemasukan</td>
+
+                            @elseif($rekap->type == 'KELUAR' )
+
+                            <td>{{ $rekap->kas }}</td>
+                            <td>Pengeluaran</td>
+
+
+                            @endif
+                            {{-- <td>@currency($rekap->type == 'MASUK' ? $rekap->kas : 0)</td> --}}
+                            {{-- <td>@currency($rekap->type == 'KELUAR' ? $rekap->kas : 0)</td> --}}
 
                             <td></td>
                         </tr>

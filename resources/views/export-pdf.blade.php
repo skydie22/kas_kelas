@@ -21,8 +21,8 @@
                 <th>No</th>
                 <th>Tanggal</th>
                 <th>Uraian</th>
-                <th>Pemasukan</th>
-                <th>Pengeluaran</th>
+                <th>saldo</th>
+                <th>Keterangan</th>
             </tr>
         </thead>
         <tbody>
@@ -31,8 +31,20 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $rekap->tanggal }}</td>
                 <td>{{ $rekap->uraian }}</td>
-                <td>{{ $rekap->type == 'MASUK' ? $rekap->kas : 0 }}</td>
-                <td>{{ $rekap->type == 'KELUAR' ? $rekap->kas : 0 }}</td>
+                @if( $rekap->type == 'MASUK' )
+
+                <td>{{ $rekap->kas }}</td>
+                <td>Pemasukan</td>
+
+                @elseif($rekap->type == 'KELUAR' )
+
+                <td>{{ $rekap->kas }}</td>
+                <td>Pengeluaran</td>
+
+
+                @endif
+                {{-- <td>{{ $rekap->type == 'MASUK' ? $rekap->kas : 0 }}</td>
+                <td>{{ $rekap->type == 'KELUAR' ? $rekap->kas : 0 }}</td> --}}
             </tr>
             @endforeach
         </tbody>
