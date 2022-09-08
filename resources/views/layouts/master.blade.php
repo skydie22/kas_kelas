@@ -52,7 +52,7 @@
 
                         @if (Auth::user()->foto != '')
                             <div
-                                style="width:200px;height:100px;background-image:url('{{ url('storage/galeri/' . Auth::user()->foto) }}');background-repeat:no-repeat;background-size:contain;">
+                                style="width:200px;height:100px;background-image:url('{{ 'storage/galeri/' . Auth::user()->foto }}');background-repeat:no-repeat;background-size:contain;">
 
 
                                 {{-- <img src="{{ url('/assets/galeri/smk.jpeg') }}" alt="sss"> --}}

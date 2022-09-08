@@ -16,11 +16,10 @@
     </style>
 
     <div
-        style="width:200px;height:100px;background-image:url('{{ url('storage/galeri/' . $user_foto) }}');background-repeat:no-repeat;background-size:contain;">
+        style="width:200px;height:100px;background-image:url('{{ 'storage/galeri/' . $user_foto }}');background-repeat:no-repeat;background-size:contain;">
 
 
-        <img src="{{ url('/assets/galeri/smk.jpeg') }}" alt="sss">
-        {{-- <img src="" alt=""> --}}
+        {{-- <img src="{{ url('/assets/galeri/smk.jpeg') }}" alt="sss"> --}}
     </div>
 
     <center>
